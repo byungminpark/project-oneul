@@ -1,0 +1,65 @@
+.Toast {
+  position: fixed;
+  left: 4px;
+  bottom: 6px;
+  z-index: 999;
+  padding: 4px;
+  font-size: 0.88em;
+  background-color: #aed6e0;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px #3f3f3f;
+
+  animation: Toast-fadeUpDown 2000ms forwards;
+}
+.Toast-title {
+  display: block;
+  font-weight: 600;
+}
+.Toast-body {
+  display: block;
+  padding: 0 4px;
+}
+
+/* @media */
+@media only screen and (min-width: 620px) {
+  .Toast {
+    top: 6px;
+    bottom: auto;
+    animation-name: Toast-fadeDownUp;
+    font-size: 1em;
+    color: #333;
+  }
+}
+
+/* @keyframes */
+@keyframes Toast-fadeUpDown {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  10%,
+  90% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes Toast-fadeDownUp {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  10%,
+  90% {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}

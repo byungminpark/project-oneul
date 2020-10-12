@@ -1,0 +1,23 @@
+.Logo {
+  display: inline-block;
+  width: 168px;
+  height: 40px;
+  line-height: 40px;
+
+  text-align: center;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.Logo span {
+  font-size: 36px;
+  font-family: 'Hi Melody', cursive;
+  font-weight: bolder;
+  letter-spacing: -4px;
+
+  user-select: none;
+  pointer-events: none;
+}
+.Logo span::selection {
+  background-color: transparent;
+}

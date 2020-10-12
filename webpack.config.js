@@ -2,14 +2,22 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const PrettierPlugin = require('prettier-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  devtool: 'inline-source-map',
+  // devtool: 'inline-source-map',
+  devtool: 'cheap-source-map',
   devServer: {
     contentBase: './dist',
     hot: true,
+  },
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -23,31 +31,28 @@ module.exports = {
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false,
     }),
-    new PrettierPlugin(),
   ],
-  entry: './src/index.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          {
+            loader: 'style-loader',
+            options: { injectType: 'singletonStyleTag' },
+          },
           'css-loader',
           {
             loader: 'postcss-loader',
             options: {
               ident: 'posstcss',
               // eslint-disable-next-line global-require
-              plugins: [require('autoprefixer')({ grid: 'autoplace' })],
+              plugins: [require('autoprefixer')],
             },
           },
         ],

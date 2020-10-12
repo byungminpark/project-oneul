@@ -1,0 +1,14 @@
+.FilterList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.FilterList-item {
+  font-size: 0.88em;
+}
+.FilterList-item.active {
+  color: #1d7b92;
+  font-weight: 700;
+}
+
+/* FilterList-anchor {} */
