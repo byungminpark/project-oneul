@@ -1,11 +1,10 @@
 <!-- markdownlint-disable -->
-<style> .heading { color: white; background-color: #222; } .sub-heading { color: #333; padding: 2px; border: 2px solid #333; } </style>
 
 
 
 <!-- 1. 서비스 기능 -->
-# <span class="heading">Ⅰ 서비스 기능</span>
-  ### <span class="sub-heading">1.검색</span>
+# <span style="color: white; background-color: #222;">Ⅰ 서비스 기능</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">1.검색</span>
 
   - ##### 검색 필터 
   Foursquare API에서 제공하는 url 파라미터를 2개를 사용하여 검색 필터를 구현하였습니다. 
@@ -26,18 +25,18 @@
 
   <br />
 
-  ### <span class="sub-heading">2. 담기 · 담긴 장소 저장 · 저장된 리스트 관리</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">2. 담기 · 담긴 장소 저장 · 저장된 리스트 관리</span>
   Sidebar에 담긴 장소들이 담긴 새 리스트에 이름을 지정하여 저장할 수 있으며, 저장된 리스트를 확인하고 삭제할 수 있습니다.
 
   <br />
       
-  ### <span class="sub-heading">3. 반응형 레이아웃</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">3. 반응형 레이아웃</span>
   미디어쿼리를 이용하여 620px을 분기점으로 하여 레이아웃이 바뀌도록 구현하였습니다. 다양한 크기의 스크린 화면에서 유연하게 보여질 수 있도록 상대적 단위를 주로 사용하였습니다. 
   > 반응형 font-size에 대한 디자인 개념을 정리하지 않아 일단 본 프로젝트에선 font-size에 rem을 사용하지 않고 em이나 px로 지정하였습니다.
       
   <br />
 
-  ### <span class="sub-heading">4. 알림 메세지</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">4. 알림 메세지</span>
   App의 최상위에서 작은 알림창인 Toast와 '예'를 눌렀을 시 실행될 callback 함수를 받는 Dialogue를 구현하였습니다. 
   > 다른 App 혹은 다른 프로젝트에서도 쉡게 재사용될 수 있도록 구성하였습니다.
 
@@ -50,8 +49,8 @@
 
 
 <!-- 2. 사용된 기술 -->
-# <span class="heading">Ⅱ 사용된 기술</span>
-  ### <span class="sub-heading">1. 개발 환경 구성</span>
+# <span style="color: white; background-color: #222;">Ⅱ 사용된 기술</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">1. 개발 환경 구성</span>
   `Webpack`을 중심으로 프론트 개발 환경을 구성하였습니다. 사용된 주요 패키지로는 `ESLint`, `Babel` 등이 있습니다. 또한 `ESLint`에 `airbnb의 config`와 더불어 `eslint-plugin-react-hooks`도 추가하였습니다.
   > `webpack.config`부터 로더, 플러그인, 패키지들을 직접 인스톨하고 babelrc나 eslintrc도 필요에 맞게 구성하고 핫 로딩까지 구현하였습니다. 모든 과정은 Webpack과 해당 패키지들의 깃헙, npm 등 공식 문서를 참고하였습니다.
 
@@ -59,20 +58,20 @@
 
   <br />
 
-  ### <span class="sub-heading">2. 크로스브라우징</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">2. 크로스브라우징</span>
   Babel의 기본적인 셋팅 이외에 `core-js`, `react-app-polyfill`을 사용하여 `IE11`에서도 `모던 JS 코드`로 개발할 수 있도록 하였습니다.
   또한 `postcss`와 `autoprefixer` 사용으로 CSS의 크로스브라우징에 대한 염려를 줄였습니다.
   > 브라우저 지원 범위에 IE11을 포함하므로서 프론트엔드 크로스브라우징 이슈 대응에 대해 배울 수 있었습니다. 
 
   <br />
   
-  ### <span class="sub-heading">3. 최신 리액트</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">3. 최신 리액트</span>
   본 프로젝트를 리액트 문서를 참고하여 함수형 컴포넌트와 훅으로 구현하였습니다.
   > 전의 프로젝트들은 클래스형 컴포넌트를 사용하였습니다.
 
   <br />
 
-  ### <span class="sub-heading">4. 컴포넌트 구조 및 네이밍</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">4. 컴포넌트 구조 및 네이밍</span>
   디렉토리 구조에서 Page별로 `components/`를 가지고, App에서 공통되는 컴포넌트는 `common/`에서 관리하였습니다. 
   > `BEM 문서`와 `Atomic Design` 그리고 여러 아티클들을 보고 고민하면서 구조를 잡았습니다. 
   큰 틀에서 생각하는 계기가 되었고, 유연하게 변경될 수 있도록 깔끔한 구조를 유지하기 위해 노력하였습니다.
@@ -90,7 +89,7 @@
 
   <br />
 
-  ### <span class="sub-heading">5. CSS 체계</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">5. CSS 체계</span>
   - **표기**
   BEM의 리액트 표기법을 참고하였습니다.
   `ex) Component-heading, Component_show, Component-footer_hide`
@@ -110,18 +109,18 @@
 
 
 <!-- 3. 개선점 -->
-# <span class="heading">Ⅲ 개선점</span>
-  ### <span class="sub-heading">1. 검색어 입력 형식</span>
+# <span style="color: white; background-color: #222;">Ⅲ 개선점</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">1. 검색어 입력 형식</span>
   현재는 Open Weather의 다른 내부적으로 날씨 데이터와 함께 coor 정보도 함께 응답하는 endpoint로 요청을 하고 데이터를 받으면 coor 정보를 본 요청의 url 파라미터에 할당해 본 요청을 시행하도록 구현해 놓았습니다. 이를 `지오코딩 API`으로 바꿔 검색어를 유연하게 받도록 하고 날씨 API와 장소 API이 받는 위치값을 하나로 통일해야 합니다.
 
 <br />
 
-  ### <span class="sub-heading">2. CSS 유지보수성</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">2. CSS 유지보수성</span>
   SCSS 학습 후 선택자 중첩을 사용하여 가독성과 css 우선순위에 대한 염려를 없애고 color, font-family, padding 등 각각 지정된 코드를 하나의 변수를 참조하게 하는 등 유지보수성 향상시켜야 합니다.
 
 <br />
 
-  ### <span class="sub-heading">3. 기능과 디자인 설계</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">3. 기능과 디자인 설계</span>
   제로부터 만들어 보자는 마음으로 디자인 래퍼런스도 없이 진행하였는데, 감으로 하다보니 많은 수정과 기능을 덧붙히면서 또 다시 반복되는 수정을 하게 되어서 비효율적인 작업이 되었습니다. 기능과 디자인을 함께 고려한 설계와 그것의 선행의 중요성을 느끼게 되었습니다.
 
 
