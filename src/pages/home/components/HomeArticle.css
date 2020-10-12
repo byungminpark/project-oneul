@@ -66,7 +66,7 @@ second one's children
   }
 }
 
-.HomeArticle-moreButton {
+.HomeArticle .HomeArticle-moreButton {
   margin: 12px 0;
   width: 100%;
   height: 2em;
@@ -76,6 +76,7 @@ second one's children
   transition: 0.2s;
   /* for bg_loading */
   background-position: center;
+  background-size: 24px 24px;
 }
 .HomeArticle-moreButton:hover {
   background-color: rgba(90, 193, 219, 0.9);

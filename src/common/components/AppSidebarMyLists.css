@@ -1,6 +1,5 @@
 .AppSidebarMyLists {
   position: relative;
-  height: 100%;
 }
 .AppSidebarMyLists-list {
   position: absolute;
@@ -9,12 +8,13 @@
   left: 0;
   right: 0;
   border-radius: 6px;
-  overflow-y: scroll;
-  overscroll-behavior: contain;
-
   padding: 8px;
-  counter-reset: list;
   background-color: ghostwhite;
+
+  overflow-y: scroll;
+  overscroll-behavior: none;
+
+  counter-reset: list;
 }
 .AppSidebarMyLists-item {
   padding: 0 4px;

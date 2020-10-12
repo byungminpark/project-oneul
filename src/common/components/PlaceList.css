@@ -51,7 +51,7 @@
   border-radius: 50%;
   background-color: #5ac1db;
 
-  transition: 0.1s;
+  /* transition: 0.1s; */
   opacity: 0.7;
 }
 .PlaceList .PlaceList-btn:hover {

@@ -12,7 +12,6 @@ const About = () => {
             <th scope="col">설명</th>
           </tr>
         </thead>
-
         <tbody>
           <tr className="About-traw">
             <th scope="row">이름</th>
@@ -28,10 +27,9 @@ const About = () => {
           </tr>
         </tbody>
       </table>
-
       {/* prettier-ignore */}
       <p className="About-further">
-        본 프로젝트 관련 사항은 <a href="https://github.com/byungminpark/jammming" target="_blank" rel="noreferrer">깃헙 README</a>를 참고해주세요.
+        본 프로젝트 관련 사항은 <a href="https://github.com/byungminpark/project-oneul" target="_blank" rel="noreferrer">깃헙 README</a>를 참고해주세요.
         <span className="About-hash">#모던JS #리액트 #웹팩 #바벨 #익스플로러11</span>
       </p>
     </main>
