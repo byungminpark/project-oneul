@@ -16,10 +16,9 @@ html,
 body {
   box-sizing: border-box;
 }
-
 *,
-* ::after,
-* ::before {
+::after,
+::before {
   box-sizing: inherit;
 }
 
@@ -32,11 +31,13 @@ body {
   COMMON
 */
 .visually-hidden {
-  position: absolute;
-  top: -999px;
-  font-size: 0;
-  width: 0;
-  height: 0;
+  overflow: hidden;
+  border: 0;
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
 }
 
 footer {
@@ -103,33 +104,26 @@ footer {
 
 /* about bgs */
 .bg_menu {
-  background: url('../images/menu.svg') no-repeat center;
-  background-size: 36px 36px;
+  background: url('../images/menu.svg') no-repeat center / 36px 36px;
 }
 .bg_menu-close {
-  background: url('../images/close.svg') no-repeat center;
-  background-size: 36px 36px;
+  background: url('../images/close.svg') no-repeat center / 36px 36px;
 }
 .bg_search {
-  background: url('../images/search.svg') no-repeat center;
-  background-size: 24px 24px;
+  background: url('../images/search.svg') no-repeat center / 24px 24px;
 }
 .bg_add {
-  background: url('../images/add_outline.svg') no-repeat center;
-  background-size: 24px 24px;
+  background: url('../images/add_outline.svg') no-repeat center / 24px 24px;
 }
 .bg_added {
-  background: url('../images/add_filled.svg') no-repeat center;
-  background-size: 36px 36px;
+  background: url('../images/add_filled.svg') no-repeat center / 36px 36px;
 }
 .bg_remove {
-  background: url('../images/close.svg') no-repeat center;
-  background-size: 24px 24px;
+  background: url('../images/close.svg') no-repeat center / 24px 24px;
 }
 /* gif bg */
 .bg_loading {
-  background: url('../images/loading.gif') no-repeat center;
-  background-size: 24px 24px; /* default */
+  background: url('../images/loading.gif') no-repeat center / 24px 24px;
 }
 
 /* 
