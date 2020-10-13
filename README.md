@@ -108,20 +108,26 @@
 
 
 
-<!-- 3. 개선점 -->
-# <span style="color: white; background-color: #222;">Ⅲ 개선점</span>
-  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">1. 검색어 입력 형식</span>
-  현재는 Open Weather의 다른 내부적으로 날씨 데이터와 함께 coor 정보도 함께 응답하는 endpoint로 요청을 하고 데이터를 받으면 coor 정보를 본 요청의 url 파라미터에 할당해 본 요청을 시행하도록 구현해 놓았습니다. 이를 `지오코딩 API`으로 바꿔 검색어를 유연하게 받도록 하고 날씨 API와 장소 API이 받는 위치값을 하나로 통일해야 합니다.
+<!-- 3. 개선점할 점 -->
+# <span style="color: white; background-color: #222;">Ⅲ 개선점할 점</span>
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">1. 제한된 검색어 양식</span>
+  현재는 Open Weather의 다른 내부적으로 날씨 데이터와 함께 coor 정보도 함께 응답하는 endpoint로 요청을 하고 데이터를 받으면 coor 정보를 본 요청의 url 파라미터에 할당해 본 요청을 시행하도록 구현해 놓았습니다. 이를 `지오코딩 API`으로 바꿔 검색어를 유연하게 받도록 하고 날씨 API와 장소 API이 받는 위치값을 하나로 통일하는 것이 좋을 듯 합니다.
 
 <br />
 
-  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">2. CSS 유지보수성</span>
-  SCSS 학습 후 선택자 중첩을 사용하여 가독성과 css 우선순위에 대한 염려를 없애고 color, font-family, padding 등 각각 지정된 코드를 하나의 변수를 참조하게 하는 등 유지보수성 향상시켜야 합니다.
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">2. CSS</span>
+  SCSS 등의 전처리기를 이용해 변수, 믹스인 등을 적극 사용하면 유지보수성 향상될 것이라고 기대합니다.
+  > SCSS는 현재 학습중에 있습니다.
 
 <br />
 
-  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">3. 기능과 디자인 설계</span>
-  제로부터 만들어 보자는 마음으로 디자인 래퍼런스도 없이 진행하였는데, 감으로 하다보니 많은 수정과 기능을 덧붙히면서 또 다시 반복되는 수정을 하게 되어서 비효율적인 작업이 되었습니다. 기능과 디자인을 함께 고려한 설계와 그것의 선행의 중요성을 느끼게 되었습니다.
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">3. 성능</span>
+  작은 프로젝트임에도 불구하고 상대적으로 구형인 스마트폰에서 더 보기 검색에 의한 결과가 쌓일 수록 눈에 보이게 느려지는 현상이 확인되었습니다. 웹팩 빌드에 관련된 여러 기술들과 정적 파일 최적화 그리고 리액트의 최적화와 관련된 api들을 살펴보고 학습할 필요성을 느꼈습니다.
+  
+<br />
+
+  ### <span style="color: #333; padding: 2px; border: 2px solid #333;">4. 기능과 디자인 설계</span>
+  제로부터 만들어 보자는 마음으로 디자인 래퍼런스도 없이 진행하였는데, 감으로 하다보니 많은 수정과 기능을 덧붙히면서 다시 수정을 반복하게 되어 작업의 효율성이 크게 떨어졌습니다. 기능과 디자인을 함께 고려한 설계의 중요성과 관련 툴들의 필요성을 느끼게 되었습니다.
 
 
 ---

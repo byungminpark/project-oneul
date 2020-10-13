@@ -1,5 +1,5 @@
 .About {
-  padding-top: 20px;
+  padding-top: 48px;
   margin: 0 auto;
   width: 100%;
   max-width: 500px;
@@ -48,7 +48,7 @@ tbody .About-traw > th::after {
 .About-further a:hover {
   text-decoration: underline;
 }
-.About-hash {
+.About-hashs {
   display: block;
   margin: 6px 0 2px;
   word-spacing: 6px;
