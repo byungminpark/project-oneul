@@ -1,0 +1,52 @@
+// $theme-color: #d8126e;
+
+// Import
+@use 'my.scss';
+@use '../styles/basic';
+
+// Mixin, 매개변수도 가능
+@mixin absolute-center {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Variable
+$my-height: 80px;
+
+// Extend/Inheritance, basic button식으로 하면 좋을 듯.
+%basic-message {
+  content: '베이직 메세지';
+}
+
+.Clock {
+  @include absolute-center;
+  // Import
+  color: my.$theme-color;
+  // color: #666;
+  border: 1px solid basic.$border-color;
+
+  .Clock-date {
+    font-size: 0.74em;
+  }
+
+  .Clock-time {
+    font-size: 0.94em;
+    letter-spacing: 1px;
+  }
+
+  // Parent selector
+  &::after {
+    // content: '에프터';
+    display: block;
+    // Extend/Inheritance
+    @extend %basic-message;
+    border: 2px solid teal;
+
+    // Operators
+    height: $my-height / 2 + 40px;
+  }
+}

@@ -39,6 +39,27 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
       },
+      // scss
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          {
+            loader: 'style-loader',
+            options: { injectType: 'singletonStyleTag' },
+          },
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'posstcss',
+              // eslint-disable-next-line global-require
+              plugins: [require('autoprefixer')],
+            },
+          },
+          'sass-loader',
+        ],
+      },
+      // css
       {
         test: /\.css$/,
         use: [
