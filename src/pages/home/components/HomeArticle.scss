@@ -1,0 +1,66 @@
+@use '../../../common/styles/mixins';
+@use '../../../common/styles/vars';
+
+.HomeArticle {
+  position: relative;
+  h4 {
+    font-weight: vars.$bolder;
+    margin-bottom: 30px;
+  }
+  .HomeArticle-footer {
+    margin-top: 8px;
+    text-align: right;
+    opacity: 0.7;
+    font-size: 0.76em;
+  }
+  // First Article
+  .Clock {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  // .WeatherList {}
+
+  // Second Article
+  .PlaceList {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 0 8%;
+    li {
+      margin: 6px 0;
+      flex-basis: 90%;
+      animation: ArticlePlaceListItem-fadeIn 0.8s ease-out;
+    }
+  }
+  .HomeArticle-moreButton {
+    @include mixins.button(text);
+    display: block;
+    margin: 12px auto;
+    width: 90%;
+    height: 1.6em;
+    /* bg_loading */
+    background-size: 20px 20px;
+  }
+}
+
+// MEDIA
+@media screen and (min-width: 620px) {
+  .HomeArticle .PlaceList {
+    justify-content: space-around;
+    padding: 0;
+  }
+  .HomeArticle .PlaceList li {
+    flex-basis: 45%;
+  }
+}
+
+// KEYFRAMES
+@keyframes ArticlePlaceListItem-fadeIn {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './AppSidebarMyLists.css';
+import './AppSidebarMyLists.scss';
 import PlaceList from './PlaceList';
 
-const AppSidebarMyLists = ({ myLists, removeList }) => {
+function AppSidebarMyLists({ myLists, removeList }) {
   return (
     <div className="AppSidebarMyLists">
-      <ul className="AppSidebarMyLists-list no-scrollbar">
+      <ul className="AppSidebarMyLists-list">
         {myLists.map(({ id, name, places, date }) => {
           return (
             <li key={id} className="AppSidebarMyLists-item">
@@ -15,10 +15,10 @@ const AppSidebarMyLists = ({ myLists, removeList }) => {
               </p>
 
               <button
-                className="MyList-button"
+                className="AppSidebarMyLists-removeBtn bg_remove"
                 onClick={() => removeList(id, name)}
                 type="button">
-                삭제
+                {/* &times; */}
               </button>
               <PlaceList className="AppSidebarMyLists-PlaceList" places={places} />
             </li>
@@ -27,7 +27,7 @@ const AppSidebarMyLists = ({ myLists, removeList }) => {
       </ul>
     </div>
   );
-};
+}
 
 AppSidebarMyLists.propTypes = {
   myLists: PropTypes.arrayOf(PropTypes.object).isRequired,

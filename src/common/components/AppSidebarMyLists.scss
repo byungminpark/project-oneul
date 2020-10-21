@@ -1,0 +1,102 @@
+@use '../styles/mixins';
+@use '../styles/vars';
+@mixin absolute-full-size {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.AppSidebarMyLists {
+  position: relative;
+
+  .AppSidebarMyLists-list {
+    @include mixins.no-scrollbar;
+    overflow-y: scroll;
+    overscroll-behavior: none;
+    @include absolute-full-size;
+    padding: 8px;
+    background-color: ghostwhite;
+    border-radius: 6px;
+    counter-reset: list;
+
+    .AppSidebarMyLists-item {
+      padding: 0 4px;
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+
+      .AppSidebarMyLists-name {
+        float: left;
+        font-size: 1.1em;
+        font-weight: 500;
+        &::before {
+          counter-increment: list;
+          content: counter(list) '. ';
+        }
+        > span {
+          opacity: 0.6;
+          font-size: 0.7em;
+        }
+      }
+
+      .AppSidebarMyLists-removeBtn {
+        float: right;
+        width: 20px;
+        height: 20px;
+        background-color: lightgray;
+        border-radius: 4px;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    /* Placlist */
+    .AppSidebarMyLists-PlaceList {
+      clear: both;
+      margin-left: 20px;
+      border-radius: 6px;
+      background-color: vars.$background-color;
+      counter-reset: list-item;
+      .PlaceList-item {
+        @include mixins.clear-fix;
+        &:nth-of-type(even) {
+          background-color: darken(vars.$background-color, 6%);
+        }
+        .PlaceList-name {
+          line-height: 1.4;
+          font-weight: 500;
+          &::before {
+            content: '(' counter(list-item) ') ';
+            font-size: 0.8em;
+          }
+        }
+        .PlaceList-address {
+          float: right;
+          width: 50%;
+          height: 1.4em;
+          overflow: hidden;
+          &::before {
+            padding-left: 8px;
+            content: '주소 ';
+            font-size: 0.8em;
+            color: #555;
+          }
+        }
+        .PlaceList-icon,
+        .PlaceList-address span {
+          display: none;
+        }
+        // Media
+        @media only screen and #{vars.$mobile} {
+          .PlaceList-address {
+            float: left;
+            width: unset;
+          }
+        }
+      }
+    }
+  }
+}

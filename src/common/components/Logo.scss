@@ -1,0 +1,23 @@
+@use '../styles/vars';
+@use '../styles/mixins';
+$height: 32px;
+
+.Logo {
+  display: inline-block;
+  width: 100px;
+  height: $height;
+  text-align: center;
+
+  span {
+    @include mixins.no-selection;
+    line-height: $height;
+    font-size: 28px;
+    font-weight: vars.$bold;
+    color: #292929;
+    letter-spacing: -0.4px;
+    transition: letter-spacing 0.14s;
+  }
+  &:hover span {
+    letter-spacing: 2.4px;
+  }
+}

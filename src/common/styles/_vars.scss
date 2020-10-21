@@ -1,0 +1,34 @@
+// bases
+$mint: #5ac1db;
+$dark-mint: darken($mint, 26%);
+$light-mint: rgb(208, 216, 216);
+$lighter-mint: lighten($light-mint, 6%);
+$light-navy: #303649;
+
+// Font
+$font-family: 'Noto Sans KR', sans-serif;
+
+$light: 300;
+$normal: 400;
+$bold: 500;
+$bolder: 700;
+$base-font: $normal 114%/1.2 $font-family;
+
+// Colors
+$accent-color: $mint;
+$accent-text-color: $dark-mint;
+
+$foreground-color: $light-navy;
+// $foreground-sub-color: $light-navy;
+$background-color: $lighter-mint;
+$background-sub-color: $light-mint;
+
+$warning-color: #f16056;
+$success-color: #85ec87;
+
+// Break-point
+$desk: '(min-width: 620px)';
+$mobile: '(max-width: 620px)';
+
+// Box-shadow
+$box-shadow: 2px 3px 3px rgba(40, 40, 40, 0.24);

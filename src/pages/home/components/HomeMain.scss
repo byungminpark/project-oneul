@@ -1,6 +1,5 @@
 .HomeMain-message {
   animation: rise-up 1s;
-
   width: 100%;
   text-align: center;
   text-decoration: underline;
@@ -9,13 +8,12 @@
 /* HomeMain */
 .HomeMain {
   padding: 12px;
+  animation: fade-in 1s;
 
   display: flex;
   flex-direction: column;
   background-color: ghostwhite;
-
-  animation: fade-in 1s;
-}
-.HomeMain .HomeArticle:first-of-type {
-  margin-bottom: 12px;
+  .HomeArticle:first-of-type {
+    margin-bottom: 12px;
+  }
 }

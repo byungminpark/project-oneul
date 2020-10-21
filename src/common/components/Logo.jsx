@@ -1,12 +1,12 @@
 import React from 'react';
-import './Logo.css';
+import './Logo.scss';
 
-const Logo = ({ ...props }) => {
+function Logo({ ...props }) {
   return (
     <div className="Logo" {...props}>
-      <span>오늘 뭐 하지?</span>
+      <span>Oneul</span>
     </div>
   );
-};
+}
 
 export default Logo;

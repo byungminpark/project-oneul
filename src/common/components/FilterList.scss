@@ -1,0 +1,15 @@
+@use '../styles/vars';
+
+.FilterList {
+  display: flex;
+  justify-content: space-between;
+
+  .FilterList-item {
+    font-size: 0.88em;
+    &.active {
+      color: vars.$accent-text-color;
+      font-weight: vars.$bolder;
+    }
+  }
+  /* FilterList-anchor {} */
+}

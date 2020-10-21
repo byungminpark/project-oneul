@@ -1,0 +1,25 @@
+.AppSidebar {
+  display: flex;
+  flex-direction: column;
+
+  /* Header */
+  .AppSidebar-header {
+    display: flex;
+    justify-content: center;
+    .Filter {
+      width: 180px;
+    }
+  }
+
+  /* Main */
+  .AppSidebar-main {
+    flex: 1 0 auto;
+    padding: 20px 0 12px;
+    display: flex;
+    flex-direction: column;
+    > div {
+      // MyList, NewList
+      flex: 1 0 auto;
+    }
+  }
+}

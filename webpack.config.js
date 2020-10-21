@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -23,10 +22,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
       favicon: './public/favicon.ico',
-    }),
-    new AddAssetHtmlPlugin({
-      filepath: require.resolve('./public/reset.css'),
-      typeOfAsset: 'css',
     }),
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false,

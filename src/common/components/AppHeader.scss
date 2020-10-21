@@ -1,0 +1,38 @@
+@use '../styles/mixins';
+@use '../styles/vars';
+
+.AppHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1[class='visually-hidden'] {
+    // for having space visually hidden element in IE.
+    display: none;
+  }
+
+  .AppHeader-button {
+    @include mixins.button(icon);
+    width: 40px;
+    height: 40px;
+  }
+
+  .AppHeader-nav {
+    a {
+      display: block;
+      width: 24px;
+      height: 24px;
+      opacity: 0.4;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+/* MEDIA */
+@media only screen and #{vars.$desk} {
+  .AppHeader-button {
+    visibility: hidden;
+  }
+}

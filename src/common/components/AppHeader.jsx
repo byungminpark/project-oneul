@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './AppHeader.css';
+import './AppHeader.scss';
 import Logo from './Logo';
 
-const AppHeader = ({ isSidebarOpen, onToggleSidebar, addedPlacesLength }) => {
+function AppHeader({ isSidebarOpen, onToggleSidebar, addedPlacesLength }) {
   return (
     <header className="AppHeader">
       <h1 className="visually-hidden">
@@ -12,7 +12,7 @@ const AppHeader = ({ isSidebarOpen, onToggleSidebar, addedPlacesLength }) => {
       </h1>
 
       <button
-        className={`AppHeader-button iconButton bg_${isSidebarOpen ? 'menu-close' : 'menu'}`} // prettier-ignore
+        className={`AppHeader-button iconButton bg_${isSidebarOpen ? 'close' : 'menu'}`} // prettier-ignore
         onClick={onToggleSidebar}
         type="button"
         aria-label={isSidebarOpen ? '사이드바 닫기' : '사이드바 열기'}>
@@ -27,12 +27,12 @@ const AppHeader = ({ isSidebarOpen, onToggleSidebar, addedPlacesLength }) => {
         </Link>
       </div>
 
-      <nav className={`AppHeader-nav AppHeader-nav_${isSidebarOpen ? 'hide' : 'show'}`}>
-        <Link to="/about">ABOUT</Link>
+      <nav className="AppHeader-nav">
+        <Link to="/about" className="bg_info" />
       </nav>
     </header>
   );
-};
+}
 
 AppHeader.defaultProps = {
   isSidebarOpen: false,

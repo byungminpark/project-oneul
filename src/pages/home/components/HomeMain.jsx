@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Clock from '../../../common/components/Clock';
 import PlaceList from '../../../common/components/PlaceList';
-import './HomeMain.css';
+import './HomeMain.scss';
 import HomeIntro from './HomeIntro';
 import HomeArticle from './HomeArticle';
 import HomeWeather from './HomeWeather';
 
 // prettier-ignore
-const HomeMain = ({ didFirstRequest, onAddPlace, onRemovePlace, weathers, places, addedPlaceIds, searchMore, isMoreButtonPossible }) => {
+function HomeMain({ didFirstRequest, onAddPlace, onRemovePlace, weathers, places, addedPlaceIds, searchMore, isMoreButtonPossible }) {
   const [isLoading, setIsLoading] = useState(); 
   const onSearchMore = async () => {
     setIsLoading(true); // loading: true
@@ -17,7 +17,6 @@ const HomeMain = ({ didFirstRequest, onAddPlace, onRemovePlace, weathers, places
   }
   
   if (!didFirstRequest) return <HomeIntro />;
-  
   if (places === false) return <span className="HomeMain-message">위치를 올바르게 입력하세요. <br /> ex)이태원동, 종로구...</span>; // prettier-ignore
   if (places.length === 0) return <span className="HomeMain-message">검색결과가 없습니다.</span>; // prettier-ignore
   
@@ -32,13 +31,13 @@ const HomeMain = ({ didFirstRequest, onAddPlace, onRemovePlace, weathers, places
       <HomeArticle title="장소" source="Foursquare">
         <PlaceList places={places} addedPlaceIds={addedPlaceIds} onAdd={onAddPlace} onRemove={onRemovePlace} />
         {isMoreButtonPossible && (isLoading 
-          ? <button className="HomeArticle-moreButton bg_loading" type="button" /> 
-          : <button className='HomeArticle-moreButton' onClick={onSearchMore} type="button">MORE</button>)}
+          ? <button className="HomeArticle-moreButton bg_spinner" type="button" /> 
+          : <button className='HomeArticle-moreButton' onClick={onSearchMore} type="button">more</button>)}
       </HomeArticle>
     </section>
     
   );
-};
+}
 
 HomeMain.propTypes = {
   didFirstRequest: PropTypes.bool.isRequired,

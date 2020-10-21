@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './FilterList.css';
+import './FilterList.scss';
 
 // prettier-ignore
-const FilterList = ({ filters, currentFilter, handleClick, listRef }) => {
+function FilterList({ filters, currentFilter, handleClick, listRef }) {
   return (
     <ul className='FilterList' ref={listRef}>
       {filters.map(name => {

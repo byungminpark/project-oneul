@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import './Dialogue.css';
+import './Dialogue.scss';
 
 // Constants
 const dialogueRoot = document.getElementById('dialogue-root'); // in index.html.
@@ -50,11 +50,11 @@ const Dialogue = React.memo(({ message, callback }) => {
   const dialogueBox = (
     <div className="Dialogue-box">
       <p className="Dialogue-message">
-        <span className="Dialogue-title">{message.title}</span>
-        <span className="Dialogue-body">{message.body}</span>
+        <p className="Dialogue-title">{message.title}</p>
+        <p className="Dialogue-body">{message.body}</p>
       </p>
-      <button className="Dialogue-cancleBtn textButton" onClick={onCancle} type="button">취소</button>
-      <button className="Dialogue-removeBtn textButton" onClick={onRemove} type="button">삭제</button>
+      <button className="Dialogue-cancleBtn" onClick={onCancle} type="button">취소</button>
+      <button className="Dialogue-removeBtn" onClick={onRemove} type="button">삭제</button>
     </div>
   );
 

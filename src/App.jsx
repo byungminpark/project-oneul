@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
-import './common/styles/common.css';
-import './App.css';
+import './common/styles/index.scss';
+import './App.scss';
 // components
 import Toast from './common/components/Toast';
 import Dialogue from './common/components/Dialogue';
@@ -36,8 +36,6 @@ const App = () => {
   };
   const onRemovePlace = placeToRemove => {
     setAddedPlaces(addedPlaces.filter(place => place.id !== placeToRemove.id));
-    // side-effect
-    showToast({ title: '새 리스트', body: `'${placeToRemove.name}'이(가) 제거되었습니다.`}); // prettier-ignore
   };
 
   return (

@@ -1,0 +1,109 @@
+@use './common/styles/vars';
+
+$header-height: 52px;
+$sidebar-width: 34vw;
+$footer-space: 52px;
+
+/* LAYOUT */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.App {
+  min-height: 100%;
+  padding-top: $header-height;
+  background-color: vars.$background-color;
+  position: relative; /* for Footer */
+}
+
+.AppHeader {
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: $header-height;
+  padding: 0 12px;
+  background-color: vars.$background-color;
+  border-bottom: 1px solid vars.$background-sub-color;
+}
+
+.AppSidebar {
+  position: fixed;
+  left: -100vw;
+  z-index: 9;
+  width: 100vw; /* actual: 100vw + 1px */
+  border-right: 1px solid vars.$background-sub-color; /* IE11 bug: blinking black box(=AppSidebar's after area) when first render, FIX: avoid overlapping with exactly same width(100vw) and left */
+  height: calc(100% - #{$header-height});
+  padding: 12px;
+  background-color: vars.$background-color;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  &::after {
+    position: absolute;
+    left: 100%;
+    bottom: 0;
+    display: block;
+    width: 100%; /* actual: 100vw + 1px */
+    margin-left: 1px; /* IE11 bug: blinking black box(=AppSidebar's after area) when first render, FIX: avoid overlapping with exactly same width(100vw) and left */
+    height: 100%;
+    content: '';
+    pointer-events: none;
+    background-color: black;
+    transition: opacity 0.8s;
+  }
+}
+
+/* Pages common */
+.App {
+  > main {
+    margin-top: 28px;
+    padding-bottom: $footer-space;
+  }
+}
+
+/* absolute positioning because not working setting footer at the bottom with flex in IE11 */
+.AppFooter {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  pointer-events: none;
+  p {
+    position: absolute;
+    bottom: 0;
+    pointer-events: all;
+  }
+}
+
+/* Media */
+@media only screen and #{vars.$desk} {
+  .App {
+    margin-left: $sidebar-width;
+  }
+  .AppSidebar {
+    width: $sidebar-width;
+    left: 0;
+    transition: none;
+    &::after {
+      display: none;
+    }
+  }
+}
+
+/*  Mobile Classes */
+@media only screen and #{vars.$mobile} {
+  .AppSidebar_hide__mobile {
+    transform: translateX(0);
+    &::after {
+      opacity: 0;
+    }
+  }
+  .AppSidebar_show__mobile {
+    transform: translateX(100%);
+    &::after {
+      opacity: 0.34;
+    }
+  }
+}

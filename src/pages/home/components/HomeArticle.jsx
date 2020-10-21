@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './HomeArticle.css';
+import './HomeArticle.scss';
 
 const HomeArticle = ({ title, source, children }) => {
   return (

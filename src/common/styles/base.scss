@@ -1,0 +1,13 @@
+@use 'vars';
+
+body {
+  font: vars.$base-font;
+  color: vars.$foreground-color;
+}
+
+// Media
+@media only screen and #{vars.$desk} {
+  body {
+    font-size: 100%;
+  }
+}

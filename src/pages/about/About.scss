@@ -1,0 +1,64 @@
+@use '../../common/styles/vars';
+
+.About {
+  padding-top: 48px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+
+  /* Table */
+  .About-table {
+    width: 76%;
+    margin: 0 auto;
+
+    thead .About-traw {
+      display: flex;
+      padding: 4px;
+      > th {
+        display: inline-block; /* for IE11 */
+        flex-basis: 32%;
+        font-size: 0.94em;
+        text-align: right;
+      }
+      > td {
+        display: inline-block; /* for IE11 */
+        flex-grow: 1;
+        font-weight: vars.$bold;
+      }
+    }
+
+    tbody {
+      th::after {
+        content: ':';
+      }
+    }
+  }
+
+  /* Further */
+  .About-further {
+    width: 84%;
+    margin: 0 auto;
+    margin-top: 32px;
+    padding: 6px;
+    background-color: ghostwhite;
+    border: 1px solid gray;
+    border-radius: 6px;
+
+    > a {
+      color: vars.$accent-text-color;
+      font-weight: vars.$bold;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .About-hashs {
+      display: block;
+      margin: 6px 0 2px;
+      word-spacing: 6px;
+      color: #999;
+      font-size: 0.9em;
+    }
+  }
+}

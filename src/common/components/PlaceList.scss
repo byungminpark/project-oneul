@@ -1,0 +1,52 @@
+@use '../styles/mixins';
+@use '../styles/vars';
+
+.PlaceList {
+  .PlaceList-item {
+    @include mixins.clear-fix;
+    position: relative;
+    z-index: 0;
+    padding: 4px;
+    background-color: vars.$background-color;
+    border-radius: 6px;
+    box-shadow: vars.$box-shadow;
+    > a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .PlaceList-icon {
+    @include mixins.absolute-center;
+    z-index: -1;
+    background-color: lightgray;
+    border-radius: 12px;
+  }
+
+  .PlaceList-name {
+    height: 1.4em;
+    overflow: hidden;
+    margin-bottom: 4%;
+    text-align: center;
+    font-weight: vars.$bold;
+    font-size: 0.94em;
+  }
+  .PlaceList-address {
+    float: left;
+    line-height: 1.1;
+    font-size: 0.9em;
+    // color: #222;
+  }
+
+  .PlaceList-btn {
+    float: right;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: vars.$accent-color;
+    // bg_icon
+    background-size: 24px 24px;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

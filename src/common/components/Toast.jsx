@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import './Toast.css';
+import './Toast.scss';
 
 // Constants
 const toastRoot = document.getElementById('toast-root'); // in index.html.
@@ -34,8 +34,8 @@ const Toast = React.memo(({ message }) => {
   // Jsx to append to toast.
   const toastContents = (
     <>
-      <span className="Toast-title">{message.title}</span>
-      <span className="Toast-body">{message.body}</span>
+      <p className="Toast-title">{message.title}</p>
+      <p className="Toast-body">{message.body}</p>
     </>
   );
 

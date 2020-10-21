@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import useFirstRenderStatus from '../hooks/useFirstRenderStatus';
-import './Filter.css';
+import './Filter.scss';
 import FilterList from './FilterList';
 
-const Filter = ({ filters, currentFilter, handleClick }) => {
+function Filter({ filters, currentFilter, handleClick }) {
   const listRef = useRef(null);
   const underbarRef = useRef(null);
   const isFirstRender = useFirstRenderStatus();
@@ -28,11 +28,10 @@ const Filter = ({ filters, currentFilter, handleClick }) => {
         currentFilter={currentFilter}
         handleClick={handleClick}
       />
-
       <span className="Filter-underbar" ref={underbarRef} />
     </div>
   );
-};
+}
 
 Filter.propTypes = {
   filters: PropTypes.arrayOf(PropTypes.string).isRequired,

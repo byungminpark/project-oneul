@@ -1,0 +1,15 @@
+@use '../styles/vars';
+
+.Filter {
+  width: 100%;
+  position: relative;
+
+  // .FilterList {}
+  .Filter-underbar {
+    position: absolute;
+    display: block;
+    height: 2px;
+    background-color: vars.$accent-text-color;
+    /* width, transform, transition in useEffect */
+  }
+}

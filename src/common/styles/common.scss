@@ -1,0 +1,42 @@
+@use 'vars';
+@use 'mixins';
+
+/* COMMON */
+.visually-hidden {
+  @include mixins.visually-hidden;
+}
+
+// 아래 3개 정리
+.footer {
+  font-size: 0.84em;
+  color: #444;
+}
+.copyright {
+  font-style: italic;
+}
+.minor-text {
+  font-size: 0.8em;
+  opacity: 0.8;
+  vertical-align: bottom;
+}
+
+// BG Classes
+$icons: (menu, close, search, add, added, remove, info);
+@each $name in $icons {
+  .bg_#{$name} {
+    background: url('../images/#{$name}.svg') no-repeat center / contain;
+  }
+}
+// gif bg
+.bg_spinner {
+  background-image: url('../images/spinner.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* only Mobile classes  */
+@media only screen and #{vars.$mobile} {
+  .no-scroll__mobile {
+    overflow: hidden;
+  }
+}

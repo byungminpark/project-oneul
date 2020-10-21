@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './PlaceList.css';
+import './PlaceList.scss';
 // constants
 const googleUrl = 'https://www.google.com';
 

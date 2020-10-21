@@ -1,12 +1,12 @@
 import React from 'react';
-import './AppFooter.css';
+import './AppFooter.scss';
 
-const AppFooter = () => {
+function AppFooter() {
   return (
     <footer className="AppFooter">
-      <p className="footer copyright">all rights reserved, 2020® Byungmin Park</p>
+      <p className="footer copyright">all rights reserved, Byungmin Park (2020)</p>
     </footer>
   );
-};
+}
 
 export default AppFooter;

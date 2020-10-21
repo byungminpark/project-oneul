@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './AppSidebarNewList.css';
+import './AppSidebarNewList.scss';
 // components
 import PlaceList from './PlaceList';
 
@@ -21,13 +21,13 @@ const AppSidebarNewList = ({ listName, addedPlaces, handleListName, onRemovePlac
       />
 
       <PlaceList
-        className="PlaceList no-scrollbar"
+        className="PlaceList"
         places={addedPlaces}
         onRemove={onRemovePlace}
       />
 
-      <button className="AppSidebarNewList-button textButton" onClick={onSaveList} type="button">
-        저장하기
+      <button className="AppSidebarNewList-button" onClick={onSaveList} type="button">
+        save
         {addedPlaces.length ? <span className="textButton-sub">{addedPlaces.length}</span> : ''} 
       </button>
     </div>

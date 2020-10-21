@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Filter from '../../common/components/Filter';
-import './Home.css';
+import './Home.scss';
 import HomeSearchBar from './components/HomeSearchBar';
 import HomeMain from './components/HomeMain';
 
@@ -13,7 +13,7 @@ import FILTERS from './constants/FILTERS.json';
 const FILTERS_NAMES = Object.keys(FILTERS);
 const { offsetGap } = fourSquareAPI;
 
-const Home = ({ onAddPlace, onRemovePlace, addedPlaceIds, showToast }) => {
+function Home({ onAddPlace, onRemovePlace, addedPlaceIds, showToast }) {
   // for conditional rendering
   const [didFirstRequest, setDidFirstRequest] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +43,7 @@ const Home = ({ onAddPlace, onRemovePlace, addedPlaceIds, showToast }) => {
   const handleFilter = e => setFilter(e.target.innerText);
 
   const onSearch = async () => {
-    if (input === '') return showToast({ title: '알림', body: '입력된 값이 없습니다. 장소를 먼저 입력하세요.'}); // prettier-ignore
+    if (input === '') return showToast({ title: '검색어', body: '입력된 값이 없습니다. 장소를 먼저 입력하세요.'}); // prettier-ignore
 
     setIsLoading(true); // loading: true
     const fetchedWeathers = await openWeatherAPI.fetch(input);
@@ -82,7 +82,7 @@ const Home = ({ onAddPlace, onRemovePlace, addedPlaceIds, showToast }) => {
 
       {/* Contents */}
       {isLoading ? (
-        <div className="Home-loader bg_loading" />
+        <div className="Home-loader bg_spinner" />
       ) : (
         <HomeMain
           didFirstRequest={didFirstRequest}
@@ -97,7 +97,7 @@ const Home = ({ onAddPlace, onRemovePlace, addedPlaceIds, showToast }) => {
       )}
     </main>
   );
-};
+}
 
 Home.propTypes = {
   onAddPlace: PropTypes.func.isRequired,

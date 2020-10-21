@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './AppSidebar.css';
+import './AppSidebar.scss';
 import AppSidebarNewList from './AppSidebarNewList';
 import AppSidebarMyLists from './AppSidebarMyLists';
 import Filter from './Filter';

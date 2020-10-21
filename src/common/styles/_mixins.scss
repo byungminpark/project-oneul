@@ -1,0 +1,82 @@
+@use 'vars';
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+@mixin no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin no-selection {
+  user-select: none;
+  pointer-events: none;
+  &::selection {
+    background-color: transparent;
+  }
+}
+
+@mixin clear-fix {
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// BUTTON
+@mixin button-span-common {
+  width: 16px;
+  line-height: 16px;
+  color: white;
+  font-size: 0.74em;
+  background-color: rgb(218, 42, 77);
+  border-radius: 50%;
+  pointer-events: none;
+}
+@mixin button($type) {
+  // text
+  @if $type == text {
+    padding: 4px 8px;
+    letter-spacing: 2.4px;
+    border-radius: 6px;
+    background-color: vars.$accent-color;
+    transition: background-color 0.1s;
+    &:hover {
+      background-color: darken(vars.$accent-color, 6%);
+    }
+    > span {
+      @include button-span-common;
+      position: absolute;
+      margin-top: -6px;
+      margin-left: -4px;
+    }
+  }
+  // icon
+  @if $type == icon {
+    position: relative;
+    > span {
+      @include button-span-common;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+  }
+}
