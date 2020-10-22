@@ -7,13 +7,13 @@ import Filter from './Filter';
 import OPTIONS from '../constants/OPTIONS.json';
 
 // prettier-ignore
-const AppSidebar = ({ isOpen, addedPlaces, resetAddedPlaces, onRemovePlace, showToast, showDialogue }) => {
+function AppSidebar({ isOpen, addedPlaces, resetAddedPlaces, onRemovePlace, showToast, showDialogue }) {
   const [option, setOption] = useState(OPTIONS[0]);
   const [listName, setListName] = useState('');
   const [myLists, setMyLists] = useState([]);
   
   // Helpers
-  const onSaveEffect = () => {
+  const onSaveListEffect = () => {
     setListName('');
     resetAddedPlaces();
     showToast({ title: '내 리스트 목록', body: `'${listName || '제목 없음'}'이(가) 저장되었습니다.`});
@@ -22,6 +22,7 @@ const AppSidebar = ({ isOpen, addedPlaces, resetAddedPlaces, onRemovePlace, show
   // Handlers
   const handleOption = e => setOption(e.target.innerText);
   const handleListName = e => setListName(e.target.value);
+  
   const onSaveList = () => {
     if (addedPlaces.length === 0) return showToast({ title: '새 리스트', body: '리스트에 추가된 장소가 없습니다.'});
     const newList = {
@@ -31,7 +32,7 @@ const AppSidebar = ({ isOpen, addedPlaces, resetAddedPlaces, onRemovePlace, show
       id: new Date().getTime(),
     };
     setMyLists(current => [...current, newList]);
-    onSaveEffect();
+    onSaveListEffect();
   };
 
   const removeList = (id, name) => {
@@ -43,19 +44,12 @@ const AppSidebar = ({ isOpen, addedPlaces, resetAddedPlaces, onRemovePlace, show
   };
 
   // Render component corresponding to current option.
+  // prettier-ignore
   const renderAppSidebarContents = () => {
     if (option === OPTIONS[0])
-      return (
-        <AppSidebarNewList
-          listName={listName}
-          addedPlaces={addedPlaces}
-          handleListName={handleListName}
-          onRemovePlace={onRemovePlace}
-          onSaveList={onSaveList}
-        />
-      );
+      return <AppSidebarNewList listName={listName} addedPlaces={addedPlaces} handleListName={handleListName} onRemovePlace={onRemovePlace} onSaveList={onSaveList} />;
 
-    if (option === OPTIONS[1])
+    if (option === OPTIONS[1]) 
       return <AppSidebarMyLists myLists={myLists} removeList={removeList} />;
   };
 
@@ -72,7 +66,7 @@ const AppSidebar = ({ isOpen, addedPlaces, resetAddedPlaces, onRemovePlace, show
       </section>
     </section>
   );
-};
+}
 
 AppSidebar.propTypes = {
   isOpen: PropTypes.bool.isRequired,

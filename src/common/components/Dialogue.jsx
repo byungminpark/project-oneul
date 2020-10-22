@@ -50,8 +50,8 @@ const Dialogue = React.memo(({ message, callback }) => {
   const dialogueBox = (
     <div className="Dialogue-box">
       <p className="Dialogue-message">
-        <p className="Dialogue-title">{message.title}</p>
-        <p className="Dialogue-body">{message.body}</p>
+        <span className="Dialogue-title">{message.title}</span>
+        <span className="Dialogue-body">{message.body}</span>
       </p>
       <button className="Dialogue-cancleBtn" onClick={onCancle} type="button">취소</button>
       <button className="Dialogue-removeBtn" onClick={onRemove} type="button">삭제</button>

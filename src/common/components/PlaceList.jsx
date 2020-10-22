@@ -17,9 +17,8 @@ const PlaceList = ({places, addedPlaceIds, onAdd, onRemove, className }) => {
       {places.map(place => {
         const { id, name, address, category, iconUrl } = place;
         const isAlreadyAdded = addedPlaceIds && addedPlaceIds.some(item => item === id);
-        return (
-          // make <PlaceListItem />.
 
+        return (
           <li key={id} className="PlaceList-item">
             <p className="PlaceList-name">
               <a
@@ -43,23 +42,23 @@ const PlaceList = ({places, addedPlaceIds, onAdd, onRemove, className }) => {
               height="36px"
             />
 
-            {/* if (onAdd, onRemove) */}
+            {/* onAdd, onRemove */}
             {}
             {(onAdd && onRemove) && (
               <button
-                className={`PlaceList-btn ${isAlreadyAdded ? 'bg_added' : 'bg_add'}`}
-                onClick={() => isAlreadyAdded ? onRemove(place) : onAdd(place)}
                 type="button"
                 aria-label={isAlreadyAdded ? '리스트에서 제거' : '리스트에 추가'}
+                onClick={() => isAlreadyAdded ? onRemove(place) : onAdd(place)}
+                className={`PlaceList-btn ${isAlreadyAdded ? 'bg_added' : 'bg_add'}`}
                 />
                 )}
-            {/* if (only onRemove) */}
+            {/* only onRemove */}
             {(!onAdd && onRemove) && (
               <button
-                className='PlaceList-btn bg_remove'
-                onClick={() => onRemove(place)}
                 type="button"
                 aria-label='리스트에서 제거'
+                onClick={() => onRemove(place)}
+                className='PlaceList-btn bg_remove'
               />
             )}
           </li>

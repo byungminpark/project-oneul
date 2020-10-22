@@ -28,7 +28,12 @@ function AppHeader({ isSidebarOpen, onToggleSidebar, addedPlacesLength }) {
       </div>
 
       <nav className="AppHeader-nav">
-        <Link to="/about" className="bg_info" />
+        <Link
+          to="/about"
+          className="bg_info"
+          data-tooltip="사이트 정보"
+          aria-label="사이트 정보"
+        />
       </nav>
     </header>
   );

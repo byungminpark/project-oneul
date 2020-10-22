@@ -17,7 +17,9 @@ $height: 32px;
     letter-spacing: -0.4px;
     transition: letter-spacing 0.14s;
   }
-  &:hover span {
-    letter-spacing: 2.4px;
+  @media only screen and #{vars.$desk} {
+    &:hover span {
+      letter-spacing: 0.08em;
+    }
   }
 }

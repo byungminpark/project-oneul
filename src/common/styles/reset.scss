@@ -132,7 +132,7 @@ table {
   border-spacing: 0;
 }
 
-/* ADDED */
+/* Additionals */
 button,
 input {
   outline: 0;
@@ -145,6 +145,10 @@ input {
 button {
   background: transparent;
   cursor: pointer;
+  &:focus-visible {
+    // accessibility
+    border: 2px solid black;
+  }
 }
 
 a {

@@ -7,7 +7,6 @@
   align-items: center;
 
   h1[class='visually-hidden'] {
-    // for having space visually hidden element in IE.
     display: none;
   }
 
@@ -18,11 +17,12 @@
   }
 
   .AppHeader-nav {
-    a {
+    > a {
       display: block;
       width: 24px;
       height: 24px;
-      opacity: 0.4;
+      position: relative;
+      opacity: 0.5;
       &:hover {
         opacity: 0.7;
       }
@@ -34,5 +34,28 @@
 @media only screen and #{vars.$desk} {
   .AppHeader-button {
     visibility: hidden;
+  }
+
+  // Tooltip
+  .AppHeader-nav {
+    > a {
+      &::after {
+        visibility: hidden;
+        content: attr(data-tooltip);
+        position: absolute;
+        right: 108%;
+        top: 20%;
+        display: block;
+        font-size: vars.$small-font-size;
+        pointer-events: none;
+        white-space: nowrap;
+      }
+      &:hover {
+        &::after {
+          visibility: visible;
+          animation: slide-left 0.2s ease-out forwards;
+        }
+      }
+    }
   }
 }

@@ -1,21 +1,12 @@
 @use '../styles/mixins';
 @use '../styles/vars';
-@mixin absolute-full-size {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
 
 .AppSidebarMyLists {
   position: relative;
 
   .AppSidebarMyLists-list {
     @include mixins.no-scrollbar;
-    overflow-y: scroll;
-    overscroll-behavior: none;
-    @include absolute-full-size;
+    @include mixins.full-absolute;
     padding: 8px;
     background-color: ghostwhite;
     border-radius: 6px;

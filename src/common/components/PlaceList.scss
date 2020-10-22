@@ -48,5 +48,11 @@
     &:hover {
       opacity: 0.8;
     }
+    // only button that containing 'bg_added'.
+    &[class~='bg_added'] {
+      opacity: 0.8;
+      animation: fall-down 0.4s ease-out forwards;
+      background-color: transparent;
+    }
   }
 }

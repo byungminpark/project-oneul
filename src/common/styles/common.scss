@@ -6,11 +6,7 @@
   @include mixins.visually-hidden;
 }
 
-// 아래 3개 정리
-.footer {
-  font-size: 0.84em;
-  color: #444;
-}
+// 아래 2개 정리
 .copyright {
   font-style: italic;
 }
@@ -32,6 +28,7 @@ $icons: (menu, close, search, add, added, remove, info);
   background-image: url('../images/spinner.gif');
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 
 /* only Mobile classes  */

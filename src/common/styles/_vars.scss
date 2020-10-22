@@ -4,15 +4,16 @@ $dark-mint: darken($mint, 26%);
 $light-mint: rgb(208, 216, 216);
 $lighter-mint: lighten($light-mint, 6%);
 $light-navy: #303649;
+// $lighter-navy: #868892
 
 // Font
 $font-family: 'Noto Sans KR', sans-serif;
-
 $light: 300;
 $normal: 400;
 $bold: 500;
 $bolder: 700;
 $base-font: $normal 114%/1.2 $font-family;
+$small-font-size: 0.9em;
 
 // Colors
 $accent-color: $mint;
@@ -24,6 +25,7 @@ $background-color: $lighter-mint;
 $background-sub-color: $light-mint;
 
 $warning-color: #f16056;
+$warning-color_soft: lighten($warning-color, 14%);
 $success-color: #85ec87;
 
 // Break-point

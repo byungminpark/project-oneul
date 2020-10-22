@@ -1,24 +1,27 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import useFirstRenderStatus from '../hooks/useFirstRenderStatus';
+import useIsFirstRender from '../hooks/useIsFirstRender';
 import './Filter.scss';
 import FilterList from './FilterList';
 
 function Filter({ filters, currentFilter, handleClick }) {
   const listRef = useRef(null);
   const underbarRef = useRef(null);
-  const isFirstRender = useFirstRenderStatus();
+  const isFirstRender = useIsFirstRender();
 
-  // underbar positioning
+  // preventing first transition.
+  useEffect(() => {
+    if (!isFirstRender) underbarRef.current.style.transition = '0.2s ease-out';
+  }, [isFirstRender]);
+
+  // underbar positioning.
   useEffect(() => {
     const currentIndex = filters.indexOf(currentFilter);
     const listItemWidth = listRef.current.children[currentIndex].clientWidth;
     const listItemLeft = listRef.current.children[currentIndex].offsetLeft;
     underbarRef.current.style.width = `${listItemWidth}px`;
     underbarRef.current.style.transform = `translateX(${listItemLeft}px)`;
-    // preventing first transition
-    if (!isFirstRender) underbarRef.current.style.transition = '0.18s ease-out';
-  }, [currentFilter, filters, isFirstRender]);
+  }, [currentFilter, filters]);
 
   return (
     <div className="Filter">

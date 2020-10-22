@@ -61,7 +61,6 @@ const App = () => {
           onAddPlace={onAddPlace}
           onRemovePlace={onRemovePlace}
           addedPlaceIds={addedPlaces && addedPlaces.map(place => place.id)}
-          showToast={showToast}
         />
       </Route>
       <Route path="/about">

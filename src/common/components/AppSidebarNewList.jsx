@@ -6,17 +6,13 @@ import PlaceList from './PlaceList';
 
 // prettier-ignore
 const AppSidebarNewList = ({ listName, addedPlaces, handleListName, onRemovePlace, onSaveList }) => {
-  const handleEnterDown = e => e.key === 'Enter' && onSaveList();
-
-
   return (
     <div className="AppSidebarNewList">
       <input
         className="AppSidebarNewList-input"
         onChange={handleListName}
-        onKeyDown={handleEnterDown}
         value={listName}
-        placeholder="ex) 이태원동 맛집 리스트"
+        placeholder="ex)  이태원 카페 리스트"
         type="text"
       />
 

@@ -13,7 +13,7 @@ import FILTERS from './constants/FILTERS.json';
 const FILTERS_NAMES = Object.keys(FILTERS);
 const { offsetGap } = fourSquareAPI;
 
-function Home({ onAddPlace, onRemovePlace, addedPlaceIds, showToast }) {
+function Home({ onAddPlace, onRemovePlace, addedPlaceIds }) {
   // for conditional rendering
   const [didFirstRequest, setDidFirstRequest] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -39,12 +39,11 @@ function Home({ onAddPlace, onRemovePlace, addedPlaceIds, showToast }) {
   };
 
   // Handlers
-  const handleInput = e => setInput(e.target.value);
+  const handleChange = e => setInput(e.target.value);
   const handleFilter = e => setFilter(e.target.innerText);
 
-  const onSearch = async () => {
-    if (input === '') return showToast({ title: '검색어', body: '입력된 값이 없습니다. 장소를 먼저 입력하세요.'}); // prettier-ignore
-
+  const handleSubmit = async e => {
+    e.preventDefault();
     setIsLoading(true); // loading: true
     const fetchedWeathers = await openWeatherAPI.fetch(input);
     const fetchedPlaces = await fourSquareAPI.fetch(input, filter, 0);
@@ -67,11 +66,10 @@ function Home({ onAddPlace, onRemovePlace, addedPlaceIds, showToast }) {
       <header className="Home-header">
         <h2 className="visually-hidden">장소 검색</h2>
         <HomeSearchBar
-          title="관심있는 장소 검색"
           input={input}
-          isUserInputValid={places !== false}
-          handleInput={handleInput}
-          handleClick={onSearch}
+          isInputValid={places !== false}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
         />
         <Filter
           filters={FILTERS_NAMES}

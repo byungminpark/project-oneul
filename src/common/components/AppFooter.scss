@@ -1,4 +1,8 @@
+@use '../styles/mixins';
+
 .AppFooter {
+  @include mixins.minor-text;
+  opacity: 1;
   p {
     width: 100%;
     padding: 12px;
