@@ -7,7 +7,7 @@ const HomeArticle = ({ title, source, children }) => {
     <article className="HomeArticle">
       <h4>{title}</h4>
       {children}
-      <footer className="HomeArticle-footer copyright">Data from ®{source}</footer>
+      <footer className="HomeArticle-footer">Data from {source}®</footer>
     </article>
   );
 };

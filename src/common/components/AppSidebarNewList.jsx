@@ -23,7 +23,7 @@ const AppSidebarNewList = ({ listName, addedPlaces, handleListName, onRemovePlac
       />
 
       <button className="AppSidebarNewList-button" onClick={onSaveList} type="button">
-        save
+        저장하기
         {addedPlaces.length ? <span className="textButton-sub">{addedPlaces.length}</span> : ''} 
       </button>
     </div>

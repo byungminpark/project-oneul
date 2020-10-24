@@ -7,13 +7,13 @@
 
 /* HomeMain */
 .HomeMain {
-  padding: 12px;
+  padding: 8px;
   animation: fade-in 1s;
 
   display: flex;
   flex-direction: column;
   background-color: ghostwhite;
   .HomeArticle:first-of-type {
-    margin-bottom: 12px;
+    margin-bottom: 28px;
   }
 }

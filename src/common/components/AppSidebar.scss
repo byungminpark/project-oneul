@@ -6,20 +6,24 @@
   .AppSidebar-header {
     display: flex;
     justify-content: center;
-    .Filter {
-      width: 180px;
+    > .MenuList {
+      width: 100%;
     }
   }
 
   /* Main */
   .AppSidebar-main {
     flex: 1 0 auto;
-    padding: 20px 0 12px;
+    padding: 16px 0 12px;
+
     display: flex;
     flex-direction: column;
-    > div {
-      // MyList, NewList
+    > .AppSidebar-contents {
       flex: 1 0 auto;
+      > div {
+        // MyList, NewList
+        height: 100%;
+      }
     }
   }
 }

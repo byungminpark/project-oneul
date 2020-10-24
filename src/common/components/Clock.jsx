@@ -12,7 +12,7 @@ const Clock = () => {
       const isVisible = colonRef.current.style.visibility === 'visible';
       colonRef.current.style.visibility = isVisible ? 'hidden' : 'visible';
       setDate(new Date());
-    }, 800);
+    }, 700);
     return function cleanup() { clearInterval(timer) }; // prettier-ignore
   }, []);
 

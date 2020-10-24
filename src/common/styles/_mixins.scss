@@ -1,5 +1,6 @@
 @use 'vars';
 
+// VISUAL
 @mixin visually-hidden {
   position: absolute;
   width: 1px;
@@ -19,40 +20,13 @@
     display: none;
   }
 }
-
+// LAYOUT
 @mixin full-absolute {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-}
-
-@mixin minor-text {
-  font-size: vars.$small-font-size;
-  font-weight: vars.$light;
-  // opacity: 0.84;
-  // vars...
-  color: #666;
-}
-
-@mixin placeholder {
-  &::placeholder {
-    @include minor-text;
-  }
-  &:focus {
-    &::placeholder {
-      visibility: hidden;
-    }
-  }
-}
-
-@mixin no-selection {
-  user-select: none;
-  pointer-events: none;
-  &::selection {
-    background-color: transparent;
-  }
 }
 
 @mixin clear-fix {
@@ -70,6 +44,42 @@
   transform: translate(-50%, -50%);
 }
 
+// TYPO
+@mixin minor-text {
+  font-size: vars.$small-font-size;
+  font-weight: vars.$light;
+  // opacity: 0.84;
+  // vars...
+  color: #666;
+}
+
+@mixin units {
+  font-size: 0.5em;
+  vertical-align: middle;
+}
+
+@mixin placeholder {
+  &::placeholder {
+    @include minor-text;
+  }
+  &:focus {
+    &::placeholder {
+      visibility: hidden;
+    }
+  }
+}
+
+@mixin no-selection {
+  user-select: none;
+  &::selection {
+    background-color: transparent;
+  }
+}
+
+@mixin copyright {
+  font-style: italic;
+}
+
 // BUTTON
 @mixin button-span-common {
   width: 16px;
@@ -83,7 +93,9 @@
 @mixin button($type) {
   // text
   @if $type == text {
+    @include no-selection;
     padding: 4px 8px;
+    font-size: vars.$small-font-size;
     letter-spacing: 2.4px;
     border-radius: 6px;
     background-color: vars.$accent-color;
@@ -95,8 +107,8 @@
       @include button-span-common;
       letter-spacing: initial;
       position: absolute;
-      margin-top: -6px;
-      margin-left: -4px;
+      margin-top: -10px;
+      margin-left: -2px;
     }
   }
   // icon

@@ -1,0 +1,42 @@
+@use '../../../common/styles/vars';
+@use '../../../common/styles/mixins';
+
+.HomeWeatherList-message {
+  @include mixins.minor-text;
+}
+
+.HomeWeatherList {
+  display: flex;
+  padding: 8px;
+  @include mixins.minor-text;
+  border: 1px solid lightgray;
+  overflow-x: scroll;
+
+  .HomeWeatherList-item {
+    padding: 4px;
+    background-color: vars.$background-color;
+    border-radius: 6%;
+    box-shadow: vars.$box-shadow;
+    &:not(:first-child) {
+      margin-left: 10px;
+    }
+
+    .HomeWeatherList-unit {
+      @include mixins.units;
+    }
+
+    .HomeWeatherList-time {
+      text-align: center;
+    }
+
+    .HomeWeatherList-contents {
+      display: flex;
+      align-items: center;
+
+      .HomeWeatherList-icon {
+        margin-right: 2px;
+      }
+      // .HomeWeatherList-temp {}
+    }
+  }
+}

@@ -7,16 +7,19 @@
   .FilterList-item,
   %FilterList-item {
     font-size: vars.$small-font-size;
-
     &_active {
       @extend %FilterList-item;
       color: vars.$accent-text-color;
-      font-weight: vars.$bolder;
+      font-weight: vars.$bold;
     }
 
-    &:hover button {
-      transition: color 0.2s;
+    &:hover > button {
+      transition: color 0.1s;
       color: vars.$accent-text-color;
+    }
+
+    > button {
+      letter-spacing: 1.2px;
     }
   }
 }

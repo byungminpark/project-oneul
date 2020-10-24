@@ -1,5 +1,5 @@
-/* eslint-disable no-alert */
 import axios from 'axios';
+import prefixZero from '../../../common/utils/prefixZero';
 
 const apiUrl = 'https://api.openweathermap.org/data/2.5';
 const key = '755f1b1d9db1f85ae0fc9271008f1ccc';
@@ -13,15 +13,14 @@ const openWeatherAPI = {
     try {
       const { lon, lat } = await this.locationToCoor(locationTermCode);
       const urlToFetch = `${apiUrl}/onecall?lat=${lat}&lon=${lon}&exclude=${optionToExclude}&appid=${key}&lang=kr&&units=metric`;
-      let { data: { current, hourly } } = await axios.get(urlToFetch); // prettier-ignore
+      let { data: { hourly } } = await axios.get(urlToFetch); // prettier-ignore
 
-      current = this.formatCurrent(current);
       hourly = this.formatHourly(hourly);
-      return { current, hourly };
+      return hourly;
     } catch (e) {
       console.error('에러', e);
       if (e.response.status === 400) return false;
-      return { current: {}, hourly: [] };
+      return [];
     }
   },
 
@@ -37,21 +36,11 @@ const openWeatherAPI = {
     return {};
   },
 
-  formatCurrent(current) {
-    return {
-      main: this.translateMain(current.weather[0].main),
-      temp: Math.round(current.temp),
-      iconUrl: `http://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png`,
-      desc: current.weather[0].description,
-      time: Intl.DateTimeFormat('en-GB', { hour: 'numeric', minute: 'numeric' }).format(new Date(current.dt * 1000)) // prettier-ignore
-    };
-  },
-
   formatHourly(hourly) {
     const todayHourly = this.filterNoToday(hourly);
     return todayHourly.map(item => {
       return {
-        time: new Date(item.dt * 1000).getHours(),
+        time: prefixZero(new Date(item.dt * 1000).getHours()),
         iconUrl: `http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`,
         desc: item.weather[0].description,
         temp: Math.round(item.temp),
@@ -85,7 +74,6 @@ const openWeatherAPI = {
     return hourly.filter(item => {
       const date = new Date(item.dt * 1000).toLocaleDateString();
       const todayDate = new Date().toLocaleDateString();
-
       return date === todayDate;
     });
   },

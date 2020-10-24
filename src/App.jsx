@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Route } from 'react-router-dom';
 import './common/styles/index.scss';
 import './App.scss';
@@ -14,11 +14,14 @@ import About from './pages/about/About';
 
 const App = () => {
   const [toastMessage, setToastMessage] = useState({ title: '', body: '' });
-  const showToast = obj => setToastMessage(obj);
   const [dialogueProps, setDialogueProps] = useState({ message: { title: '', body: '' }, callback: () => {} }); // prettier-ignore
-  const showDialogue = obj => setDialogueProps(obj);
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [addedPlaces, setAddedPlaces] = useState([]);
+
+  const showToast = obj => setToastMessage(obj);
+  const showDialogue = obj => setDialogueProps(obj);
+  const resetAddedPlaces = () => setAddedPlaces([]);
+
   const onToggleSidebar = () => {
     if (isSidebarOpen) {
       setIsSidebarOpen(false);
@@ -29,14 +32,21 @@ const App = () => {
     }
   };
 
-  const [addedPlaces, setAddedPlaces] = useState([]);
-  const resetAddedPlaces = () => setAddedPlaces([]);
-  const onAddPlace = placeToAdded => {
+  // prettier-ignore
+  const checkIsAlreadyAdded = useCallback(id => {
+    if (!addedPlaces) return false;
+    const addedPlaceIds = addedPlaces.map(place => place.id);
+    return addedPlaceIds.some(item => item === id);
+  }, [addedPlaces]);
+
+  const onAddPlace = useCallback(placeToAdded => {
     setAddedPlaces(places => [...places, placeToAdded]);
-  };
-  const onRemovePlace = placeToRemove => {
-    setAddedPlaces(addedPlaces.filter(place => place.id !== placeToRemove.id));
-  };
+  }, []);
+
+  // prettier-ignore
+  const onRemovePlace = useCallback(placeToRemove => {
+      setAddedPlaces(addedPlaces.filter(place => place.id !== placeToRemove.id));
+    }, [addedPlaces]);
 
   return (
     <div className="App">
@@ -55,12 +65,11 @@ const App = () => {
         showDialogue={showDialogue}
       />
 
-      {/* make <AppMain> when getting complicated. */}
       <Route exact path="/">
         <Home
           onAddPlace={onAddPlace}
           onRemovePlace={onRemovePlace}
-          addedPlaceIds={addedPlaces && addedPlaces.map(place => place.id)}
+          checkIsAlreadyAdded={checkIsAlreadyAdded}
         />
       </Route>
       <Route path="/about">

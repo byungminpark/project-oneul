@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './HomeSearchBar.scss';
 
-const HomeSearchBar = ({ input, isInputValid, handleChange, handleSubmit }) => {
+function HomeSearchBar({ input, isInputValid, handleChange, handleSubmit }) {
   return (
     <form className="HomeSearchBar" onSubmit={handleSubmit}>
       <legend className="visually-hidden">관심있는 장소 검색</legend>
@@ -21,7 +21,7 @@ const HomeSearchBar = ({ input, isInputValid, handleChange, handleSubmit }) => {
       />
     </form>
   );
-};
+}
 
 HomeSearchBar.propTypes = {
   input: PropTypes.string.isRequired,

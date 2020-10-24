@@ -28,7 +28,6 @@ const Toast = React.memo(({ message }) => {
   // Effect (once at first), preventing first animation.
   useEffect(() => {
     toast.hidden = true;
-    console.log('rget');
   }, []);
 
   // Jsx to append to toast.

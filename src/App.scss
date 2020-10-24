@@ -1,5 +1,4 @@
 @use './common/styles/vars';
-
 $header-height: 52px;
 $sidebar-width: 34vw;
 $footer-space: 52px;
@@ -94,13 +93,13 @@ body,
 
 /*  Mobile Classes */
 @media only screen and #{vars.$mobile} {
-  .AppSidebar_hide__mobile {
+  .AppSidebar_hide {
     transform: translateX(0);
     &::after {
       opacity: 0;
     }
   }
-  .AppSidebar_show__mobile {
+  .AppSidebar_show {
     transform: translateX(100%);
     &::after {
       opacity: 0.34;

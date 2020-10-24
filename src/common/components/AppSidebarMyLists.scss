@@ -14,20 +14,19 @@
 
     .AppSidebarMyLists-item {
       padding: 0 4px;
+      animation: rise-up_short 0.2s ease-out;
       &:not(:last-child) {
         margin-bottom: 16px;
       }
 
       .AppSidebarMyLists-name {
         float: left;
-        font-size: 1.1em;
-        font-weight: 500;
         &::before {
           counter-increment: list;
           content: counter(list) '. ';
         }
         > span {
-          opacity: 0.6;
+          opacity: 0.5;
           font-size: 0.7em;
         }
       }
@@ -48,38 +47,43 @@
     .AppSidebarMyLists-PlaceList {
       clear: both;
       margin-left: 20px;
+      font-size: 0.88em;
+      color: #333;
       border-radius: 6px;
       background-color: vars.$background-color;
       counter-reset: list-item;
       .PlaceList-item {
         @include mixins.clear-fix;
+        padding: 4px;
         &:nth-of-type(even) {
-          background-color: darken(vars.$background-color, 6%);
+          background-color: darken(vars.$background-color, 4%);
         }
-        .PlaceList-name {
-          line-height: 1.4;
-          font-weight: 500;
+
+        .PlaceList-title {
           &::before {
             content: '(' counter(list-item) ') ';
-            font-size: 0.8em;
+            font-size: 0.76em;
           }
         }
+
         .PlaceList-address {
           float: right;
           width: 50%;
-          height: 1.4em;
+          font-size: 0.94em;
+          color: #555;
           overflow: hidden;
           &::before {
-            padding-left: 8px;
+            @include mixins.minor-text;
+            padding-left: 12px;
             content: '주소 ';
-            font-size: 0.8em;
-            color: #555;
           }
         }
+
         .PlaceList-icon,
         .PlaceList-address span {
           display: none;
         }
+
         // Media
         @media only screen and #{vars.$mobile} {
           .PlaceList-address {

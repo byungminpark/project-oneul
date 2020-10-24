@@ -7,10 +7,11 @@
     position: relative;
     z-index: 0;
     padding: 4px;
+    font-size: 0.94em;
     background-color: vars.$background-color;
     border-radius: 6px;
     box-shadow: vars.$box-shadow;
-    > a:hover {
+    a:hover {
       text-decoration: underline;
     }
   }
@@ -19,22 +20,23 @@
     @include mixins.absolute-center;
     z-index: -1;
     background-color: lightgray;
-    border-radius: 12px;
+    border-radius: 10px;
   }
 
-  .PlaceList-name {
-    height: 1.4em;
-    overflow: hidden;
+  .PlaceList-title {
     margin-bottom: 4%;
     text-align: center;
     font-weight: vars.$bold;
-    font-size: 0.94em;
+    overflow: hidden;
   }
+
   .PlaceList-address {
     float: left;
-    line-height: 1.1;
-    font-size: 0.9em;
-    // color: #222;
+    font-size: vars.$small-font-size;
+    > span {
+      display: block;
+      @include mixins.minor-text;
+    }
   }
 
   .PlaceList-btn {

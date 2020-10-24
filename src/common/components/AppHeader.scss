@@ -16,7 +16,11 @@
     height: 40px;
   }
 
-  .AppHeader-nav {
+  .AppHeader-nav,
+  %AppHeader-nav {
+    &_invisible {
+      @extend %AppHeader-nav;
+    }
     > a {
       display: block;
       width: 24px;
@@ -30,7 +34,14 @@
   }
 }
 
-/* MEDIA */
+/* MEDIA: mobile */
+@media only screen and #{vars.$mobile} {
+  .AppHeader-nav_invisible {
+    visibility: hidden;
+  }
+}
+
+/* MEDIA: desk */
 @media only screen and #{vars.$desk} {
   .AppHeader-button {
     visibility: hidden;
@@ -41,7 +52,7 @@
     > a {
       &::after {
         visibility: hidden;
-        content: attr(data-tooltip);
+        content: attr(aria-label);
         position: absolute;
         right: 108%;
         top: 20%;

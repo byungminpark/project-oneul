@@ -13,7 +13,7 @@ import FILTERS from './constants/FILTERS.json';
 const FILTERS_NAMES = Object.keys(FILTERS);
 const { offsetGap } = fourSquareAPI;
 
-function Home({ onAddPlace, onRemovePlace, addedPlaceIds }) {
+function Home({ onAddPlace, onRemovePlace, checkIsAlreadyAdded }) {
   // for conditional rendering
   const [didFirstRequest, setDidFirstRequest] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,14 +23,14 @@ function Home({ onAddPlace, onRemovePlace, addedPlaceIds }) {
   const [isMorePlaces, setIsMorePlaces] = useState();
   const offset = useRef(0);
   // for data
-  const [weathers, setWeathers] = useState({ current: {}, hourly: [] });
+  const [weathers, setWeathers] = useState([]);
   const [places, setPlaces] = useState([]);
 
   // Side effect functions for handlers
   const onSearchEffect = placesLength => {
     setDidFirstRequest(true);
     offset.current = offsetGap;
-    placesLength < offsetGap ? setIsMorePlaces(false) : setIsMorePlaces(undefined);
+    placesLength < offsetGap ? setIsMorePlaces(false) : setIsMorePlaces(true);
   };
 
   const searchMoreEffect = placesLength => {
@@ -86,11 +86,11 @@ function Home({ onAddPlace, onRemovePlace, addedPlaceIds }) {
           didFirstRequest={didFirstRequest}
           weathers={weathers}
           places={places}
-          addedPlaceIds={addedPlaceIds}
+          checkIsAlreadyAdded={checkIsAlreadyAdded}
           onAddPlace={onAddPlace}
           onRemovePlace={onRemovePlace}
           searchMore={searchMore}
-          isMoreButtonPossible={isMorePlaces !== false}
+          isMorePlaces={isMorePlaces}
         />
       )}
     </main>
@@ -100,7 +100,7 @@ function Home({ onAddPlace, onRemovePlace, addedPlaceIds }) {
 Home.propTypes = {
   onAddPlace: PropTypes.func.isRequired,
   onRemovePlace: PropTypes.func.isRequired,
-  addedPlaceIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+  checkIsAlreadyAdded: PropTypes.func.isRequired,
 };
 
 export default Home;

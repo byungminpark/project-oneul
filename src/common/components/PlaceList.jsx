@@ -1,26 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './PlaceList.scss';
-// constants
+
 const googleUrl = 'https://www.google.com';
 
-// prettier-ignore
-const PlaceList = ({places, addedPlaceIds, onAdd, onRemove, className }) => {
+function PlaceList({ places, checkIsAlreadyAdded, onAdd, onRemove, className }) {
   const renderAddressAnchor = address => {
-    // if address is not valid.
     if (address.split(' ').length === 1) return <a href="#" onClick={e => e.preventDefault()}>{address}</a>; // prettier-ignore
     return <a href={`${googleUrl}/maps/place/${address}`} target="_blank" rel="noreferrer">{address}</a>; // prettier-ignore
   };
 
-  return places === false ? null : (
+  return places === false ? (
+    'asd'
+  ) : (
     <ul className={className}>
       {places.map(place => {
         const { id, name, address, category, iconUrl } = place;
-        const isAlreadyAdded = addedPlaceIds && addedPlaceIds.some(item => item === id);
-
+        const isAlreadyAdded = checkIsAlreadyAdded && checkIsAlreadyAdded(id);
+        // <PlaceListItem />
         return (
           <li key={id} className="PlaceList-item">
-            <p className="PlaceList-name">
+            <p className="PlaceList-title">
               <a
                 href={`${googleUrl}/search?q=${address} ${name}`}
                 target="_blank"
@@ -30,7 +30,7 @@ const PlaceList = ({places, addedPlaceIds, onAdd, onRemove, className }) => {
             </p>
 
             <p className="PlaceList-address">
-              <span className="minor-text">주소<br /></span>
+              <span>주소</span>
               {renderAddressAnchor(address)}
             </p>
 
@@ -44,21 +44,22 @@ const PlaceList = ({places, addedPlaceIds, onAdd, onRemove, className }) => {
 
             {/* onAdd, onRemove */}
             {}
-            {(onAdd && onRemove) && (
+            {onAdd && onRemove && (
               <button
                 type="button"
                 aria-label={isAlreadyAdded ? '리스트에서 제거' : '리스트에 추가'}
-                onClick={() => isAlreadyAdded ? onRemove(place) : onAdd(place)}
+                onClick={() => (isAlreadyAdded ? onRemove(place) : onAdd(place))}
                 className={`PlaceList-btn ${isAlreadyAdded ? 'bg_added' : 'bg_add'}`}
-                />
-                )}
+              />
+            )}
+
             {/* only onRemove */}
-            {(!onAdd && onRemove) && (
+            {!onAdd && onRemove && (
               <button
                 type="button"
-                aria-label='리스트에서 제거'
+                aria-label="리스트에서 제거"
                 onClick={() => onRemove(place)}
-                className='PlaceList-btn bg_remove'
+                className="PlaceList-btn bg_remove"
               />
             )}
           </li>
@@ -66,11 +67,10 @@ const PlaceList = ({places, addedPlaceIds, onAdd, onRemove, className }) => {
       })}
     </ul>
   );
-};
+}
 
 PlaceList.defaultProps = {
-  // places
-  addedPlaceIds: undefined,
+  checkIsAlreadyAdded: undefined,
   onAdd: undefined,
   onRemove: undefined,
   className: 'PlaceList',
@@ -78,10 +78,10 @@ PlaceList.defaultProps = {
 
 PlaceList.propTypes = {
   places: PropTypes.arrayOf(PropTypes.object).isRequired,
-  addedPlaceIds: PropTypes.arrayOf(PropTypes.string),
+  checkIsAlreadyAdded: PropTypes.func,
   onAdd: PropTypes.func,
   onRemove: PropTypes.func,
   className: PropTypes.string,
 };
 
-export default PlaceList;
+export default React.memo(PlaceList);

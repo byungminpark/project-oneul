@@ -1,0 +1,31 @@
+@use '../styles/vars';
+@use '../styles/mixins';
+
+.MenuList {
+  display: flex;
+  overflow: hidden;
+  font-size: vars.$small-font-size;
+  text-align: center;
+
+  .MenuList-item,
+  %MenuList-item {
+    flex-grow: 1;
+    line-height: 1.8;
+    opacity: 0.8;
+    &_active {
+      @extend %MenuList-item;
+      font-weight: vars.$bolder;
+      opacity: 1;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    > button {
+      @include mixins.no-selection;
+      width: 100%;
+      letter-spacing: 1.2px;
+    }
+  }
+}

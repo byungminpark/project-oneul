@@ -11,7 +11,7 @@ function FilterList({ filters, currentFilter, handleClick, listRef }) {
           <li
             key={name}
             className={name === currentFilter ? 'FilterList-item_active' : 'FilterList-item'}>
-            <button className="FilterList-anchor" onClick={handleClick} type="button">
+            <button onClick={handleClick} type="button">
               {name}
             </button>
           </li>
