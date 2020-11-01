@@ -47,8 +47,7 @@
     .AppSidebarMyLists-PlaceList {
       clear: both;
       margin-left: 20px;
-      font-size: 0.88em;
-      color: #333;
+      font-size: vars.$small-font-size;
       border-radius: 6px;
       background-color: vars.$background-color;
       counter-reset: list-item;
@@ -68,9 +67,8 @@
 
         .PlaceList-address {
           float: right;
-          width: 50%;
-          font-size: 0.94em;
-          color: #555;
+          width: 60%;
+          font-size: 0.96em;
           overflow: hidden;
           &::before {
             @include mixins.minor-text;

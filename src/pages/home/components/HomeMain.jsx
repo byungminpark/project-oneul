@@ -8,7 +8,7 @@ import HomeArticle from './HomeArticle';
 import HomeWeatherList from './HomeWeatherList';
 
 // prettier-ignore
-function HomeMain({ didFirstRequest, onAddPlace, onRemovePlace, weathers, places, checkIsAlreadyAdded, searchMore, isMorePlaces }) {
+function HomeMain({ didFirstRequest, onAddPlace, onRemovePlace, weathers, places, checkIsAdded, searchMore, isMorePlaces }) {
   const [isLoading, setIsLoading] = useState();
 
   const onSearchMore = async () => {
@@ -30,10 +30,10 @@ function HomeMain({ didFirstRequest, onAddPlace, onRemovePlace, weathers, places
       </HomeArticle>
 
       <HomeArticle title="장소" source="Foursquare">
-        <PlaceList places={places} checkIsAlreadyAdded={checkIsAlreadyAdded} onAdd={onAddPlace} onRemove={onRemovePlace} />
+        <PlaceList places={places} checkIsAdded={checkIsAdded} onAdd={onAddPlace} onRemove={onRemovePlace} />
         {isMorePlaces && (isLoading 
           ? <button className="HomeArticle-moreButton bg_spinner" type="button" /> 
-          : <button className='HomeArticle-moreButton' onClick={onSearchMore} type="button">더 보기</button>)}
+          : <button className='HomeArticle-moreButton' onClick={onSearchMore} type="button">More</button>)}
       </HomeArticle>
     </section>
     
@@ -46,7 +46,7 @@ HomeMain.propTypes = {
   onRemovePlace: PropTypes.func.isRequired,
   weathers: PropTypes.arrayOf(PropTypes.object).isRequired,
   places: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.object), PropTypes.bool]).isRequired, // prettier-ignore
-  checkIsAlreadyAdded: PropTypes.func.isRequired,
+  checkIsAdded: PropTypes.func.isRequired,
   searchMore: PropTypes.func.isRequired,
   isMorePlaces: PropTypes.bool.isRequired,
 };

@@ -33,7 +33,7 @@ const App = () => {
   };
 
   // prettier-ignore
-  const checkIsAlreadyAdded = useCallback(id => {
+  const checkIsAdded = useCallback(id => {
     if (!addedPlaces) return false;
     const addedPlaceIds = addedPlaces.map(place => place.id);
     return addedPlaceIds.some(item => item === id);
@@ -69,7 +69,7 @@ const App = () => {
         <Home
           onAddPlace={onAddPlace}
           onRemovePlace={onRemovePlace}
-          checkIsAlreadyAdded={checkIsAlreadyAdded}
+          checkIsAdded={checkIsAdded}
         />
       </Route>
       <Route path="/about">

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './HomeArticle.scss';
 
-const HomeArticle = ({ title, source, children }) => {
+function HomeArticle({ title, source, children }) {
   return (
     <article className="HomeArticle">
       <h4>{title}</h4>
@@ -10,7 +10,7 @@ const HomeArticle = ({ title, source, children }) => {
       <footer className="HomeArticle-footer">Data from {source}®</footer>
     </article>
   );
-};
+}
 
 HomeArticle.propTypes = {
   title: PropTypes.string.isRequired,

@@ -13,14 +13,14 @@ import FILTERS from './constants/FILTERS.json';
 const FILTERS_NAMES = Object.keys(FILTERS);
 const { offsetGap } = fourSquareAPI;
 
-function Home({ onAddPlace, onRemovePlace, checkIsAlreadyAdded }) {
+function Home({ onAddPlace, onRemovePlace, checkIsAdded }) {
   // for conditional rendering
   const [didFirstRequest, setDidFirstRequest] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   // for fetch
   const [input, setInput] = useState('');
   const [filter, setFilter] = useState(FILTERS_NAMES[0]);
-  const [isMorePlaces, setIsMorePlaces] = useState();
+  const [isMorePlaces, setIsMorePlaces] = useState(false);
   const offset = useRef(0);
   // for data
   const [weathers, setWeathers] = useState([]);
@@ -86,7 +86,7 @@ function Home({ onAddPlace, onRemovePlace, checkIsAlreadyAdded }) {
           didFirstRequest={didFirstRequest}
           weathers={weathers}
           places={places}
-          checkIsAlreadyAdded={checkIsAlreadyAdded}
+          checkIsAdded={checkIsAdded}
           onAddPlace={onAddPlace}
           onRemovePlace={onRemovePlace}
           searchMore={searchMore}
@@ -100,7 +100,7 @@ function Home({ onAddPlace, onRemovePlace, checkIsAlreadyAdded }) {
 Home.propTypes = {
   onAddPlace: PropTypes.func.isRequired,
   onRemovePlace: PropTypes.func.isRequired,
-  checkIsAlreadyAdded: PropTypes.func.isRequired,
+  checkIsAdded: PropTypes.func.isRequired,
 };
 
 export default Home;

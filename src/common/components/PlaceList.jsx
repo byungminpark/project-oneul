@@ -4,7 +4,7 @@ import './PlaceList.scss';
 
 const googleUrl = 'https://www.google.com';
 
-function PlaceList({ places, checkIsAlreadyAdded, onAdd, onRemove, className }) {
+function PlaceList({ places, checkIsAdded, onAdd, onRemove, className }) {
   const renderAddressAnchor = address => {
     if (address.split(' ').length === 1) return <a href="#" onClick={e => e.preventDefault()}>{address}</a>; // prettier-ignore
     return <a href={`${googleUrl}/maps/place/${address}`} target="_blank" rel="noreferrer">{address}</a>; // prettier-ignore
@@ -16,7 +16,7 @@ function PlaceList({ places, checkIsAlreadyAdded, onAdd, onRemove, className }) 
     <ul className={className}>
       {places.map(place => {
         const { id, name, address, category, iconUrl } = place;
-        const isAlreadyAdded = checkIsAlreadyAdded && checkIsAlreadyAdded(id);
+        const isAlreadyAdded = checkIsAdded && checkIsAdded(id);
         // <PlaceListItem />
         return (
           <li key={id} className="PlaceList-item">
@@ -70,7 +70,7 @@ function PlaceList({ places, checkIsAlreadyAdded, onAdd, onRemove, className }) 
 }
 
 PlaceList.defaultProps = {
-  checkIsAlreadyAdded: undefined,
+  checkIsAdded: undefined,
   onAdd: undefined,
   onRemove: undefined,
   className: 'PlaceList',
@@ -78,7 +78,7 @@ PlaceList.defaultProps = {
 
 PlaceList.propTypes = {
   places: PropTypes.arrayOf(PropTypes.object).isRequired,
-  checkIsAlreadyAdded: PropTypes.func,
+  checkIsAdded: PropTypes.func,
   onAdd: PropTypes.func,
   onRemove: PropTypes.func,
   className: PropTypes.string,

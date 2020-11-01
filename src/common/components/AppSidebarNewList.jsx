@@ -5,7 +5,7 @@ import './AppSidebarNewList.scss';
 import PlaceList from './PlaceList';
 
 // prettier-ignore
-const AppSidebarNewList = ({ listName, addedPlaces, handleListName, onRemovePlace, onSaveList }) => {
+function AppSidebarNewList({ listName, addedPlaces, handleListName, onRemovePlace, onSaveList }) {
   return (
     <div className="AppSidebarNewList">
       <input
@@ -23,12 +23,12 @@ const AppSidebarNewList = ({ listName, addedPlaces, handleListName, onRemovePlac
       />
 
       <button className="AppSidebarNewList-button" onClick={onSaveList} type="button">
-        저장하기
+        Save
         {addedPlaces.length ? <span className="textButton-sub">{addedPlaces.length}</span> : ''} 
       </button>
     </div>
   );
-};
+}
 
 AppSidebarNewList.propTypes = {
   listName: PropTypes.string.isRequired,

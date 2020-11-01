@@ -43,20 +43,6 @@ function AppSidebar({ isOpen, addedPlaces, resetAddedPlaces, onRemovePlace, show
     showDialogue({ message: {title: MENUS[1], body: `'${name}'을(를) 정말 삭제하시겠습니까?`}, callback });
   };
 
-  // prettier-ignore
-  const renderAppSidebarContents = () => {
-      return (
-        <>
-          <div className="AppSidebar-contents" hidden={menu !== MENUS[0]}>
-            <AppSidebarNewList listName={listName} addedPlaces={addedPlaces} handleListName={handleListName} onRemovePlace={onRemovePlace} onSaveList={onSaveList} />
-          </div>
-          <div className="AppSidebar-contents" hidden={menu !== MENUS[1]}>
-            <AppSidebarMyLists myLists={myLists} removeList={removeList} />
-          </div>
-        </>
-      );
-  };
-
   return (
     <section className={`AppSidebar AppSidebar_${isOpen ? 'show' : 'hide'}`}>
       <header className="AppSidebar-header">
@@ -66,7 +52,8 @@ function AppSidebar({ isOpen, addedPlaces, resetAddedPlaces, onRemovePlace, show
 
       <section className="AppSidebar-main">
         <h3 className="visually-hidden">{menu}</h3>
-        {renderAppSidebarContents()}
+        {(menu === MENUS[0]) && <AppSidebarNewList listName={listName} addedPlaces={addedPlaces} handleListName={handleListName} onRemovePlace={onRemovePlace} onSaveList={onSaveList} />}
+        {(menu === MENUS[1]) && <AppSidebarMyLists myLists={myLists} removeList={removeList} />}
       </section>
     </section>
   );
